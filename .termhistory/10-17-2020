@@ -1,0 +1,81 @@
+ecasanes@Ernests-Macbook-Pro simpleweb % docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+ecasanes@Ernests-Macbook-Pro simpleweb % docker run -it ecasanes/node-simple:0.0.1 sh
+/ # ls
+39-node-server-setup.zip  index.js                  package-lock.json         srv
+Dockerfile                lib                       package.json              sys
+bin                       media                     proc                      tmp
+dev                       mnt                       root                      usr
+etc                       node_modules              run                       var
+home                      opt                       sbin
+/ # exit
+ecasanes@Ernests-Macbook-Pro simpleweb % docker ps
+ecasanes@Ernests-Macbook-Pro simpleweb % git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+ecasanes@Ernests-Macbook-Pro simpleweb % docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+ecasanes@Ernests-Macbook-Pro simpleweb % docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+ecasanes@Ernests-Macbook-Pro simpleweb % docker build -t ecasanes/node-simple:0.0.2
+"docker build" requires exactly 1 argument.
+See 'docker build --help'.
+
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+Build an image from a Dockerfile
+ecasanes@Ernests-Macbook-Pro simpleweb % docker build -t ecasanes/node-simple:0.0.2 .
+Sending build context to Docker daemon  91.14kB
+Step 1/6 : FROM node:alpine
+ ---> 87e4e57acaa5
+Step 2/6 : WORKDIR /usr/app
+ ---> Running in 0061d3138b6c
+Removing intermediate container 0061d3138b6c
+ ---> 0dd18b988ad9
+Step 3/6 : COPY ./package.json ./
+ ---> 3a6410aed9ef
+Step 4/6 : RUN npm install
+ ---> Running in 6665607d5d82
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN app No description
+npm WARN app No repository field.
+npm WARN app No license field.
+
+added 50 packages from 37 contributors and audited 50 packages in 7.144s
+found 0 vulnerabilities
+
+Removing intermediate container 6665607d5d82
+ ---> c797781d054e
+Step 5/6 : COPY ./ ./
+ ---> cace92cbbdcd
+ecasanes@Ernests-Macbook-Pro simpleweb % docker run ecasanes/node-simple:0.0.2
+
+> @ start /usr/app
+> node index.js
+
+Listening on port 8080
+^C%                                                                                                                     
+ecasanes@Ernests-Macbook-Pro simpleweb % docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+ecasanes@Ernests-Macbook-Pro simpleweb % docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+ecasanes@Ernests-Macbook-Pro simpleweb % git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .bookmarkhistory
+        modified:   Dockerfile
+        modified:   index.js
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .termhistory/10-17-2020
+
+no changes added to commit (use "git add" and/or "git commit -a")
+ecasanes@Ernests-Macbook-Pro simpleweb %        
